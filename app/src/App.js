@@ -9,7 +9,8 @@ import Child from "./containers/Details/Details";
 class App extends PureComponent {
 
     state = {
-        drinks: null
+        drinks: null,
+        filteredDrinks: null
     };
 
     componentDidMount() {
@@ -28,6 +29,10 @@ class App extends PureComponent {
             data.data.drinks.shift(1);
             data.data.drinks.shift(1);
 
+            const dd = data.data.drinks.filter((drink)=> {
+                return drink.strDrink.toLowerCase().includes(("n").toLowerCase())
+            });
+            console.log(dd);
             this.setState({
                 drinks: data.data
             })
@@ -37,7 +42,7 @@ class App extends PureComponent {
     render() {
 
         return (
-            <div>
+            <div >
 
                 <NavigationBar/>
                 <Switch>

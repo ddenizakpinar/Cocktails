@@ -1,5 +1,5 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import {createMuiTheme, makeStyles, ThemeProvider} from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
@@ -8,6 +8,7 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 import "./Cocktails.module.css";
 import DetailsCard from "../DetailsCard/DetailsCard";
 import Details from "../../containers/Details/Details";
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -22,8 +23,9 @@ const useStyles = makeStyles(theme => ({
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
-        backgroundColor: theme.palette.background.paper,
-        height: "100vh"
+        backgroundColor: "#121212",
+        height: "100vh",
+
     },
     gridList: {
         width: "100hh",
@@ -42,44 +44,53 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
+const theme = createMuiTheme({
+    overrides: {
+        MuiGridListTile: {
+            tile: {
+                height:"auto",
+                display: "block",
+                overflow: " hidden",
+                position: "relative",
+            },
+        },
+    },
+});
+
 const random = () => {
     const random = Math.floor(Math.random() * 3);
     return random;
 };
 
 export default function AdvancedGridList(props) {
-
-
     props.drinks.drinks.map((item, index) => {
         item.size = index % (5) === 0 ? 1 : 1;
     });
-
     const classes = useStyles();
     console.log(props.drinks);
     return (
-        <div className={classes.root}>
-            <GridList cellHeight="auto" spacing={0} cols={3} className={classes.gridList}>
-                {props.drinks.drinks.map(tile => (
+        <ThemeProvider theme={theme}>
+            <div className={classes.root}>
+                <GridList cellHeight="auto" spacing={0} cols={3} className={classes.gridList}>
+                    {props.drinks.drinks.map(tile => (
+                        <GridListTile classes={{tile: 'ccc'}} key={tile.strDrinkThumb} cols={tile.size} rows={1}>
+                            <Details id={tile.idDrink}/>
+                            <GridListTileBar
+                                title={tile.strDrink}
+                                titlePosition="top"
+                                actionIcon={
+                                    <IconButton aria-label={`star ${tile.title}`} className={classes.icon}>
+                                        <StarBorderIcon/>
+                                    </IconButton>
+                                }
+                                actionPosition="left"
+                                className={classes.titleBar}
+                            />
+                        </GridListTile>
 
-                    <GridListTile key={tile.strDrinkThumb} cols={tile.size} rows={1}>
-
-                        <Details id={tile.idDrink}></Details>
-
-                        <GridListTileBar
-                            title={tile.strDrink}
-                            titlePosition="top"
-                            actionIcon={
-                                <IconButton aria-label={`star ${tile.title}`} className={classes.icon}>
-                                    <StarBorderIcon/>
-                                </IconButton>
-                            }
-                            actionPosition="left"
-                            className={classes.titleBar}
-                        />
-                    </GridListTile>
-
-                ))}
-            </GridList>
-        </div>
+                    ))}
+                </GridList>
+            </div>
+        </ThemeProvider>
     );
 }

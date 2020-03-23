@@ -4,7 +4,7 @@ a {
 }
 
 
-a:visited,a:focus,a:hover {
+a:visited, a:focus, a:hover {
     color: white;
 }
 
@@ -12,3 +12,4 @@ a:visited,a:focus,a:hover {
 a:hover, a:active {
     color: white
 }
+

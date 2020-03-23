@@ -29,8 +29,6 @@ class Child extends PureComponent {
 
     render() {
 
-        console.log("id");
-        console.log(this.state.id)
         return (
             <div>
                 {
