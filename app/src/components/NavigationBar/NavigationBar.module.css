@@ -1,0 +1,14 @@
+a {
+    color: white;
+    text-decoration: none;
+}
+
+
+a:visited,a:focus,a:hover {
+    color: white;
+}
+
+
+a:hover, a:active {
+    color: white
+}

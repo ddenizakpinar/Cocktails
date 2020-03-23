@@ -5,6 +5,9 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+import "./Cocktails.module.css";
+import DetailsCard from "../DetailsCard/DetailsCard";
+import Details from "../../containers/Details/Details";
 import {
     BrowserRouter as Router,
     Switch,
@@ -36,9 +39,7 @@ const useStyles = makeStyles(theme => ({
     icon: {
         color: 'white',
     },
-    gridListTile: {
-        height: "40vh"
-    }
+
 }));
 
 const random = () => {
@@ -50,20 +51,20 @@ export default function AdvancedGridList(props) {
 
 
     props.drinks.drinks.map((item, index) => {
-        item.size = index % (5 + random()) === 0 ? 2 : 1;
+        item.size = index % (5) === 0 ? 1 : 1;
     });
 
     const classes = useStyles();
-    props.drinks.drinks.shift(1);
+    console.log(props.drinks);
     return (
         <div className={classes.root}>
-            <GridList cellHeight="a" spacing={0} cols={4} className={classes.gridList}>
+            <GridList cellHeight="auto" spacing={0} cols={3} className={classes.gridList}>
                 {props.drinks.drinks.map(tile => (
 
-                    <GridListTile key={tile.strDrinkThumb} cols={tile.size} rows={1}
-                                  className={classes.gridListTile}>
-                        <Link href="/1"><img src={tile.strDrinkThumb} alt={tile.strDrinkThumb} width="100%"
-                                            height={"auto"}/></Link>
+                    <GridListTile key={tile.strDrinkThumb} cols={tile.size} rows={1}>
+
+                        <Details id={tile.idDrink}></Details>
+
                         <GridListTileBar
                             title={tile.strDrink}
                             titlePosition="top"

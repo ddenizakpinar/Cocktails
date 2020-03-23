@@ -1,0 +1,8 @@
+imgg {
+    width: 100%;
+    height: auto;
+}
+
+img {
+    min-height: 100%;
+}

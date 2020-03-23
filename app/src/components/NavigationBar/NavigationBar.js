@@ -17,7 +17,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-
+import {Link} from "react-router-dom";
+import "./NavigationBar.module.css";    
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -75,6 +76,7 @@ const useStyles = makeStyles(theme => ({
         }),
         marginRight: 0,
     },
+
 }));
 
 export default function PersistentDrawerRight() {
@@ -91,10 +93,10 @@ export default function PersistentDrawerRight() {
     };
 
     return (
-        <div className={classes.root} >
+        <div className={classes.root}>
             <CssBaseline/>
             <AppBar
-                style={{backgroundColor:"#121212"}}
+                style={{backgroundColor: "#121212"}}
                 position="fixed"
                 className={clsx(classes.appBar, {
                     [classes.appBarShift]: open,
@@ -102,7 +104,7 @@ export default function PersistentDrawerRight() {
             >
                 <Toolbar>
                     <Typography variant="h5" noWrap className={classes.title}>
-                        Cocktails
+                        <Link className={classes.links} to={"/"}>Cocktails</Link>
                     </Typography>
                     <IconButton
                         color="inherit"
