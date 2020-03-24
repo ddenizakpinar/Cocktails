@@ -63,6 +63,9 @@ const random = () => {
 };
 
 export default function AdvancedGridList(props) {
+    const isMobile = window.innerWidth < 480;
+    const isMedium = window.innerWidth < 720;
+    const cols = isMobile ? 1 : isMedium ? 2 : 3;
     props.drinks.drinks.map((item, index) => {
         item.size = index % (5) === 0 ? 1 : 1;
     });
@@ -71,7 +74,7 @@ export default function AdvancedGridList(props) {
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
-                <GridList cellHeight="auto" spacing={0} cols={3} className={classes.gridList}>
+                <GridList cellHeight="auto" spacing={0} cols={cols} className={classes.gridList}>
                     {props.drinks.drinks.map(tile => (
                         <GridListTile classes={{tile: 'ccc'}} key={tile.strDrinkThumb} cols={tile.size} rows={1}>
                             <Details id={tile.idDrink}/>
