@@ -7,15 +7,6 @@ import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import "./Cocktails.module.css";
 import DetailsCard from "../DetailsCard/DetailsCard";
-import Details from "../../containers/Details/Details";
-
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useRouteMatch
-} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -48,7 +39,6 @@ const theme = createMuiTheme({
     overrides: {
         MuiGridListTile: {
             tile: {
-
                 display: "block",
                 overflow: " hidden",
                 position: "relative",
@@ -56,28 +46,19 @@ const theme = createMuiTheme({
         },
     },
 });
-
-const random = () => {
-    const random = Math.floor(Math.random() * 3);
-    return random;
-};
-
 export default function AdvancedGridList(props) {
     const isMobile = window.innerWidth < 480;
     const isMedium = window.innerWidth < 720;
     const cols = isMobile ? 1 : isMedium ? 2 : 3;
-    props.drinks.drinks.map((item, index) => {
-        item.size = index % (5) === 0 ? 1 : 1;
-    });
+
     const classes = useStyles();
 
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
-                <GridList cellHeight="auto" spacing={0} cols={cols} className={classes.gridList}>
+                <GridList cellHeight="auto" spacing={8} cols={cols} className={classes.gridList}>
                     {props.drinks.drinks.map(tile => (
-                        <GridListTile classes={{tile: 'ccc'}} key={tile.strDrinkThumb} cols={tile.size} rows={1}>
-
+                        <GridListTile key={tile.strDrinkThumb} cols={1} rows={1}>
                             {
                                 <DetailsCard drink={tile.detail.data.drinks[0]}/>
                             }

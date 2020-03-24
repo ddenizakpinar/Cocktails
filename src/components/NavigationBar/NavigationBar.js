@@ -1,22 +1,13 @@
 import React from 'react';
-import clsx from 'clsx';
-import {fade, makeStyles, useTheme} from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
+import {fade, makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
-import {Link} from "react-router-dom";
 import "./NavigationBar.module.css";
 import LocalBarRoundedIcon from '@material-ui/icons/LocalBarRounded';
-
-const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -57,7 +48,8 @@ const useStyles = makeStyles(theme => ({
     },
     inputRoot: {
         color: 'inherit',
-    }, drawerHeader: {
+    },
+    drawerHeader: {
         display: 'flex',
         alignItems: 'center',
         padding: theme.spacing(0, 1),
@@ -82,40 +74,17 @@ const useStyles = makeStyles(theme => ({
 
 export default function PersistentDrawerRight(props) {
     const classes = useStyles();
-    const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
-
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
-
     return (
         <div className={classes.root}>
             <CssBaseline/>
             <AppBar
-
                 style={{backgroundColor: "#121212"}}
-                position="fixed"
-                className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open,
-                })}>
+                position="fixed">
 
                 <Toolbar>
-                    <IconButton
-                        edge="start"
-                        className={classes.menuButton}
-                        color="inherit"
-                        aria-label="open drawer"
-                    >
-                        <LocalBarRoundedIcon/>
-
-                    </IconButton>
+                    <LocalBarRoundedIcon/>
                     <Typography variant="h5" noWrap className={classes.title}>
-                        <Link className={classes.links} to={"/"}>Cocktails</Link>
+                        Cocktails
                     </Typography>
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>

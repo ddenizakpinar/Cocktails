@@ -6,7 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Typography from '@material-ui/core/Typography';
-
 import "./DetailsCard.module.css";
 
 const useStyles = makeStyles(theme => ({
@@ -41,14 +40,13 @@ export default function DetailsCard(props) {
     };
     return (
         <Card className={classes.root}>
-            <a onClick={handleExpandClick}>
-                <CardMedia style={{height: "1vh", width: "100%"}}
-                           className={classes.media}
-                           image={props.drink.strDrinkThumb}
-                           title={props.drink.strDrink}
+            <div  onClick={handleExpandClick}>
+                <CardMedia
+                    className={classes.media}
+                    image={props.drink.strDrinkThumb}
+                    title={props.drink.strDrink}/>
+            </div>
 
-                />
-            </a>
             <CardActions style={{backgroundColor: "#121212"}} disableSpacing/>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
