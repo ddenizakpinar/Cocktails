@@ -14,6 +14,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputBase from '@material-ui/core/InputBase';
 import {Link} from "react-router-dom";
 import "./NavigationBar.module.css";
+import LocalBarRoundedIcon from '@material-ui/icons/LocalBarRounded';
 
 const drawerWidth = 240;
 
@@ -110,7 +111,8 @@ export default function PersistentDrawerRight(props) {
                         color="inherit"
                         aria-label="open drawer"
                     >
-                        <MenuIcon/>
+                        <LocalBarRoundedIcon/>
+
                     </IconButton>
                     <Typography variant="h5" noWrap className={classes.title}>
                         <Link className={classes.links} to={"/"}>Cocktails</Link>
@@ -126,7 +128,9 @@ export default function PersistentDrawerRight(props) {
                                 input: classes.inputInput,
                             }}
                             inputProps={{'aria-label': 'search'}}
-                            onChange={(event)=>{props.inputHandler(event)}}
+                            onChange={(event) => {
+                                props.inputHandler(event)
+                            }}
                         />
                     </div>
                 </Toolbar>

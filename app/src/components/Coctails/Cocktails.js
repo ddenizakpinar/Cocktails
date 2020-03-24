@@ -70,14 +70,17 @@ export default function AdvancedGridList(props) {
         item.size = index % (5) === 0 ? 1 : 1;
     });
     const classes = useStyles();
-    console.log(props.drinks);
+
     return (
         <ThemeProvider theme={theme}>
             <div className={classes.root}>
                 <GridList cellHeight="auto" spacing={0} cols={cols} className={classes.gridList}>
                     {props.drinks.drinks.map(tile => (
                         <GridListTile classes={{tile: 'ccc'}} key={tile.strDrinkThumb} cols={tile.size} rows={1}>
-                            <Details id={tile.idDrink}/>
+
+                            {
+                                <DetailsCard drink={tile.detail.data.drinks[0]}/>
+                            }
                             <GridListTileBar
                                 title={tile.strDrink}
                                 titlePosition="top"

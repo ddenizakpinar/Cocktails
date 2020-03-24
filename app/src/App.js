@@ -16,6 +16,10 @@ class App extends PureComponent {
     };
 
     componentDidMount() {
+        this.fetchCocktails();
+    }
+
+    fetchCocktails = () => {
         axios.get(
             "https://the-cocktail-db.p.rapidapi.com/filter.php", {
                 params: {
@@ -30,17 +34,43 @@ class App extends PureComponent {
             data.data.drinks.shift(1);
             data.data.drinks.shift(1);
             data.data.drinks.shift(1);
-
-
-            this.setState({
-                drinks: data.data,
-                filteredDrinks: data.data
-            })
+            this.fetchDetails(data.data.drinks);
         }).catch();
-    }
+    };
+
+    fetchDetails = async (data) => {
+
+        const detailed = [];
+        const fetchit = data.map(drink => {
+            return axios.get(
+                "https://the-cocktail-db.p.rapidapi.com/lookup.php", {
+                    params: {
+                        "i": drink.idDrink
+                    },
+                    headers: {
+                        "x-rapidapi-host": "the-cocktail-db.p.rapidapi.com",
+                        "x-rapidapi-key": "28c7ad4c19msh6f19516a62edb69p1054d2jsn0e3eba366df7"
+                    }
+                }).then((data) => {
+
+                drink.detail = data;
+                detailed.push(drink);
+            }).catch();
+        });
+
+        Promise.all(fetchit).then(() => {
+            const formatted = {
+                drinks: detailed
+            };
+            this.setState({
+                drinks: formatted,
+                filteredDrinks: formatted
+            })
+        });
+    };
 
     filtre = () => {
-        console.log(this.state.drinks)
+
         const filter = this.state.drinks.drinks.filter((drink) => {
             return drink.strDrink.toLowerCase().includes(this.state.filter.toLowerCase())
         });
@@ -48,11 +78,11 @@ class App extends PureComponent {
             drinks: filter
         };
         this.setState({
-            filteredDrinks:drinks
+            filteredDrinks: drinks
         });
 
-        console.log(drinks)
-    }
+
+    };
 
 
     inputHandler = (event) => {
@@ -70,7 +100,8 @@ class App extends PureComponent {
                 <Switch>
                     {
                         this.state.drinks !== null ?
-                            <Route path="/" exact component={() => <Cocktails drinks={this.state.filteredDrinks}/>}/> : null
+                            <Route path="/" exact
+                                   component={() => <Cocktails drinks={this.state.filteredDrinks}/>}/> : null
                     }
 
 
