@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function PersistentDrawerRight() {
+export default function PersistentDrawerRight(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -126,6 +126,7 @@ export default function PersistentDrawerRight() {
                                 input: classes.inputInput,
                             }}
                             inputProps={{'aria-label': 'search'}}
+                            onChange={(event)=>{props.inputHandler(event)}}
                         />
                     </div>
                 </Toolbar>

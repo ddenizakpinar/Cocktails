@@ -24,12 +24,12 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'space-around',
         overflow: 'hidden',
         backgroundColor: "#121212",
-        height: "100vh",
+        height: "auto",
 
     },
     gridList: {
-        width: "100hh",
-        height: "100vh",
+        width: "100%",
+        height: "100%",
         // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
         transform: 'translateZ(0)',
     },
@@ -48,7 +48,7 @@ const theme = createMuiTheme({
     overrides: {
         MuiGridListTile: {
             tile: {
-                height:"auto",
+
                 display: "block",
                 overflow: " hidden",
                 position: "relative",
