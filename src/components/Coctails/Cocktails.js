@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import "./Cocktails.module.css";
 import DetailsCard from "../DetailsCard/DetailsCard";
+import Spinner from "../Spinner/Spinner";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -54,30 +55,30 @@ export default function AdvancedGridList(props) {
     const classes = useStyles();
 
     return (
-        <ThemeProvider theme={theme}>
-            <div className={classes.root}>
-                <GridList cellHeight="auto" spacing={8} cols={cols} className={classes.gridList}>
-                    {props.drinks.drinks.map(tile => (
-                        <GridListTile key={tile.strDrinkThumb} cols={1} rows={1}>
-                            {
-                                <DetailsCard drink={tile.detail.data.drinks[0]}/>
-                            }
-                            <GridListTileBar
-                                title={tile.strDrink}
-                                titlePosition="top"
-                                actionIcon={
-                                    <IconButton aria-label={`star ${tile.title}`} className={classes.icon}>
-                                        <StarBorderIcon/>
-                                    </IconButton>
-                                }
-                                actionPosition="left"
-                                className={classes.titleBar}
-                            />
-                        </GridListTile>
+        <div>
+            {props.drinks ? <ThemeProvider theme={theme}>
+                <div className={classes.root}>
+                    <GridList cellHeight="auto" spacing={8} cols={cols} className={classes.gridList}>
+                        {
+                            props.drinks.drinks.map(tile => (
+                                <GridListTile key={tile.strDrinkThumb} cols={1} rows={1}>
+                                    {
+                                        <DetailsCard drink={tile.detail.data.drinks[0]}/>
+                                    }
+                                    <GridListTileBar
+                                        title={tile.strDrink}
+                                        titlePosition="top"
+                                    
+                                        actionPosition="left"
+                                        className={classes.titleBar}
+                                    />
+                                </GridListTile>
 
-                    ))}
-                </GridList>
-            </div>
-        </ThemeProvider>
+                            ))
+                        }
+                    </GridList>
+                </div>
+            </ThemeProvider> : <Spinner></Spinner>}
+        </div>
     );
 }

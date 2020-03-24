@@ -40,7 +40,7 @@ export default function DetailsCard(props) {
     };
     return (
         <Card className={classes.root}>
-            <div  onClick={handleExpandClick}>
+            <div onClick={handleExpandClick}>
                 <CardMedia
                     className={classes.media}
                     image={props.drink.strDrinkThumb}
@@ -52,66 +52,78 @@ export default function DetailsCard(props) {
                 <CardContent>
                     <div style={{color: "white"}}>
 
-                        <Typography paragraph>
+                        <Typography>
                             <b>Method:</b>
                         </Typography>
 
                         <Typography paragraph>
-                            {props.drink.strCategory}
                             {props.drink.strInstructions}
-                            {props.drink.strGlass}
                         </Typography>
-                        <Typography paragraph>
+                        <Typography>
                             <b>Ingredients:</b>
                         </Typography>
                         <Typography>
                             {props.drink.strIngredient1}
+                            {" "}
                             {props.drink.strMeasure1}
                         </Typography>
-
                         <Typography>
                             {props.drink.strIngredient2}
+                            {" "}
                             {props.drink.strMeasure2}
                         </Typography>
                         <Typography>
                             {props.drink.strIngredient3}
+                            {" "}
                             {props.drink.strMeasure3}
                         </Typography>
                         <Typography>
                             {props.drink.strIngredient4}
+                            {" "}
                             {props.drink.strMeasure4}
                         </Typography>
                         <Typography>
                             {props.drink.strIngredient5}
+                            {" "}
                             {props.drink.strMeasure5}
                         </Typography>
                         <Typography>
                             {props.drink.strIngredient6}
+                            {" "}
                             {props.drink.strMeasure6}
                         </Typography>
                         <Typography>
                             {props.drink.strIngredient7}
+                            {" "}
                             {props.drink.strMeasure7}
                         </Typography>
                         <Typography>
                             {props.drink.strIngredient8}
+                            {" "}
                             {props.drink.strMeasure8}
                         </Typography>
                         <Typography>
                             {props.drink.strIngredient9}
+                            {" "}
                             {props.drink.strMeasure9}
                         </Typography>
                         <Typography>
                             {props.drink.strIngredient10}
+                            {" "}
                             {props.drink.strMeasure10}
                         </Typography>
                         <Typography>
                             {props.drink.strIngredient11}
+                            {" "}
                             {props.drink.strMeasure11}
                         </Typography>
                         <Typography>
                             {props.drink.strIngredient12}
+                            {" "}
                             {props.drink.strMeasure12}
+                        </Typography>
+                        <Typography>
+                            {props.drink.strGlass}
                         </Typography>
                     </div>
                 </CardContent>

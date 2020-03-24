@@ -4,6 +4,7 @@ import NavigationBar from "./components/NavigationBar/NavigationBar";
 import Cocktails from "./components/Coctails/Cocktails";
 import classes from './App.module.css';
 
+// "start": "node server.js",
 class App extends PureComponent {
 
     state = {
@@ -87,8 +88,9 @@ class App extends PureComponent {
             <div className={classes.App}>
                 <NavigationBar inputHandler={this.inputHandler}/>
                 {
-                    this.state.drinks !== null ?
-                        <Cocktails drinks={this.state.filteredDrinks}/> : <h1>Loading</h1>
+
+                    <Cocktails drinks={this.state.filteredDrinks}/>
+
                 }
             </div>
         );
