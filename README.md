@@ -2,8 +2,9 @@
 
 ![img](https://i.imgyukle.com/2020/03/26/JpI4Jy.png)
 
-Cocktails is a web app for recipes of most famous cocktails. Built with ReactJS.
-
+Cocktails is a web app for recipes of most famous cocktails. Built with ReactJS. </br>
+https://cocktailsinfo.herokuapp.com
+ 
 
 
 
