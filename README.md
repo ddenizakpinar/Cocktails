@@ -1,6 +1,6 @@
 # Cocktails
 
-![img](https://i.imgyukle.com/2020/03/26/JpI4Jy.png)
+![alt text](https://github.com/ddenizakpinar/Cocktails/blob/master/1.png)
 
 Cocktails is a web app for recipes of most famous cocktails. Built with ReactJS. </br>
 https://cocktailsinfo.herokuapp.com
@@ -19,7 +19,7 @@ https://cocktailsinfo.herokuapp.com
 API: https://rapidapi.com/theapiguy/api/the-cocktail-db </br>
 Design: https://material-ui.com
 ## Screenshots
-![img](https://i.imgyukle.com/2020/03/26/JpYWm0.png)
+![alt text](https://github.com/ddenizakpinar/Cocktails/blob/master/2.png)
 
 
 ## License
